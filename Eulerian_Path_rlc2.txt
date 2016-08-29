@@ -1,0 +1,36 @@
+Hierholzer's Algorithm
+======================
+
+Compilar com `g++ Eulerian_Path_rlc2.cpp --std=c++11`
+
+
+"Se C é um ciclo qualquer em um grafo Euleriano G,
+então, após remover as arestas de C, os componentes
+conexos restantes de G também serão grafos Eulerianos."
+
+Definição: Um grafo Euleriano G tem, para todos os seus vertices, um numero
+par de arestas.
+
+Funcionamento do Algoritmo
+--------------------------
+
+ 1. Selecionamos um vertice V qualquer do grafo.
+ 2. Percorremos arestas até voltarmos a V.
+    -   Sempre voltaremos, pois como temos um numero par de arestas por vértice,
+        sempre que usamos uma para chegar nele, haverá uma para sair dele.
+    enquanto percorremos, apagamos as arestas percorridas e guardamos os
+    vertices numa lista
+    (isso impede que andemos novamente por uma aresta.)
+ 3. Com esses vertices, iteramos sobre eles, e caso algum tenha alguma aresta,
+    percorremos por ela para achar um novo ciclo, da mesma forma.
+ 4. Inserimos os vértices visitados nesse novo ciclo na lista de vertices,
+    na posição do vertice que inicia o ciclo.
+    -   Após essa inserção, o proximo vértice a ser iterado faz parte no novo
+        ciclo,então podemos continuar iterando e procurando novos ciclos, que
+        compartilham vertices com o ciclo atual(o ciclo guardado na lista)
+ 5. Repetimos 3 e 4 até todos os vertices serem percorridos, e, consequentemente,
+    todas as arestas serem percorridas
+
+Dessa forma, sempre são removidos pares de arestas de cada vertice, e assim,
+os subgrafos que sobram após retirarmos o ciclo continuam sendo
+grafos eulerianos, pois o numero de arestas em cada vertice ainda é par.
